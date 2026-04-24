@@ -3,14 +3,14 @@
 
 This project is a simplified version of the BZip2 compression algorithm, implemented as part of the Data Compression course (Spring 2026). This phase (Phase 1) implements the core pipeline including Block Division, Run-Length Encoding (RLE-1), and Burrows-Wheeler Transform (BWT).
 
-## 🚀 Features (Phase 1)
+## Features (Phase 1)
 - **Block Division**: Support for large files with configurable block sizes (100KB - 900KB).
 - **RLE-1**: Standard BZip2 Run-Length Encoding for efficient pre-processing.
 - **BWT**: Matrix-based forward Transform and efficient $O(N)$ LF-mapping Inverse Transform.
 - **Configuration**: `config.ini` integration for easy parameter management.
 - **Cross-Platform**: Supporting Linux, macOS, and Windows (via Makefile).
 
-## 🛠️ Installation & Build
+## Installation & Build
 
 ### Prerequisites
 - GCC Compiler
@@ -23,7 +23,7 @@ make all
 ```
 The executable `bzip2_impl` will be created in the root directory.
 
-## 📁 Usage
+## Usage
 
 ### Compression
 ```bash
@@ -45,7 +45,7 @@ make test
 make demo
 ```
 
-## 📊 Phase 1 Implementation Details
+## Phase 1 Implementation Details
 
 ### Block Management
 Files are divided into blocks of size defined in `config.ini` (default: 500,000 bytes). This allows the algorithm to handle files larger than available RAM.
@@ -57,7 +57,7 @@ The RLE-1 stage focuses on reducing sequences of 4 or more identical bytes. It f
 - **Forward**: Uses cyclic rotation sorting to cluster identical characters.
 - **Inverse**: Employs the Last-First (LF) mapping property for fast recovery without reconstructing the full matrix.
 
-## 📊 Performance Analysis
+## Performance Analysis
 
 ### Benchmark Results
 The following results were achieved on a sample dataset (100KB - 1MB files) with a block size of 500KB.
@@ -75,12 +75,6 @@ The following results were achieved on a sample dataset (100KB - 1MB files) with
 ![Performance Time](results/performance_time.png)
 *Figure 2: Execution Time vs File Size.*
 
-> [!NOTE]
-> In Phase 1, the compression ratio is often $\ge 100\%$ because BWT clusters data without reducing size, and RLE-1 only compresses runs of 4+ bytes. Significant compression is expected in Stage 3 after Huffman coding.
-
 ## 👥 Team
 - **Name**: mzaid-1
 - **Email**: l226760@lhr.nu.edu.pk
-
-## 📜 License
-This project is for educational purposes as part of the Data Compression Course.
