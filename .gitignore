@@ -1,0 +1,20 @@
+# Build artifacts
+bzip2_impl
+bzip2_impl.exe
+obj/
+bin/
+
+# Temporary files
+results/
+benchmarks/demo.txt
+*.tmp
+*.bz2p1
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+.clion/
