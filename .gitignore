@@ -4,8 +4,9 @@ bzip2_impl.exe
 obj/
 bin/
 
-# Temporary files
-results/
+# Temporary files (keep results folder but ignore large artifacts)
+results/*.bz2p1
+results/temp_*
 benchmarks/demo.txt
 *.tmp
 *.bz2p1
