@@ -57,6 +57,27 @@ The RLE-1 stage focuses on reducing sequences of 4 or more identical bytes. It f
 - **Forward**: Uses cyclic rotation sorting to cluster identical characters.
 - **Inverse**: Employs the Last-First (LF) mapping property for fast recovery without reconstructing the full matrix.
 
+## 📊 Performance Analysis
+
+### Benchmark Results
+The following results were achieved on a sample dataset (100KB - 1MB files) with a block size of 500KB.
+
+| File | Size (Bytes) | Compression Ratio (%) | Time (ms) |
+|------|--------------|-----------------------|-----------|
+| canterbury_alice.txt | 151,191 | 100.0% | 77.5 |
+| binary.dat | 1,000,000 | 100.0% | 339.4 |
+| demo.txt | 91 | 111.0% | 0.5 |
+
+### Visualizations
+![Compression Ratio](results/compression_ratio.png)
+*Figure 1: Compression Ratio across different file types (Phase 1).*
+
+![Performance Time](results/performance_time.png)
+*Figure 2: Execution Time vs File Size.*
+
+> [!NOTE]
+> In Phase 1, the compression ratio is often $\ge 100\%$ because BWT clusters data without reducing size, and RLE-1 only compresses runs of 4+ bytes. Significant compression is expected in Stage 3 after Huffman coding.
+
 ## 👥 Team
 - **Name**: mzaid-1
 - **Email**: l226760@lhr.nu.edu.pk
