@@ -39,12 +39,9 @@ Tested on a diverse dataset including repetitive text, random binary, and Englis
 | **single_char.txt** | 10,000 B | 289 B | **2.9%** | 17.6 ms |
 | **large_text.txt** | 1,021,739 B | 37,841 B | **3.7%** | 820.5 ms |
 
-### Visualizations
-![Compression Ratios](results/compression_ratio.png)
-*Figure 1: Compression Ratio (%) achieved across different benchmark files.*
-
-![Performance Scaling](results/performance_time.png)
-*Figure 2: Execution time vs File Size showing O(n log n) efficiency.*
+### Performance Visualizations
+![Performance Graphs](results/performance_graphs.png)
+*Figure 1: Comprehensive performance metrics including compression ratio, speed (MB/s), and size reduction.*
 
 ---
 
