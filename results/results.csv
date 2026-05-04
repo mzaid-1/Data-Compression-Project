@@ -1,0 +1,7 @@
+File,Size,BlockSize,CompressionRatio,Time,Memory
+binary_random.bin,50000,500000,102.64,29.5,N/A
+binary_repeat.bin,90000,500000,2.87,80.0,N/A
+single_char.txt,10000,500000,2.89,34.2,N/A
+small.txt,44,500000,695.45,27.7,N/A
+text_english.txt,182602,500000,27.09,102.0,N/A
+text_repetitive.txt,88000,500000,3.67,77.4,N/A
