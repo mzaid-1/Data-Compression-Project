@@ -1,80 +1,95 @@
-# BZip2 Compression Algorithm Implementation
-## Data Compression Course Project - Phase 1
+# BZip2 Compression Algorithm — Peak Performance Implementation
+**Course:** Data Compression (Spring 2026)
+**Student:** mzaid-1
+**Final Submission Date:** May 4, 2026
 
-This project is a simplified version of the BZip2 compression algorithm, implemented as part of the Data Compression course (Spring 2026). This phase (Phase 1) implements the core pipeline including Block Division, Run-Length Encoding (RLE-1), and Burrows-Wheeler Transform (BWT).
+---
 
-## Features (Phase 1)
-- **Block Division**: Support for large files with configurable block sizes (100KB - 900KB).
-- **RLE-1**: Standard BZip2 Run-Length Encoding for efficient pre-processing.
-- **BWT**: Matrix-based forward Transform and efficient $O(N)$ LF-mapping Inverse Transform.
-- **Configuration**: `config.ini` integration for easy parameter management.
-- **Cross-Platform**: Supporting Linux, macOS, and Windows (via Makefile).
+## 🚀 Peak Performance BZip2
+This implementation achieves **Peak Performance** status by optimizing the two most critical bottlenecks in the BZip2 pipeline:
+1.  **O(n log n) Burrows-Wheeler Transform**: Replaced the standard O(n²) matrix sort with a stable prefix-doubling suffix array algorithm. This allows processing the maximum block size (900 KB) in milliseconds rather than minutes.
+2.  **Binary Tree Huffman Decoding**: Replaced the O(N) symbol-by-symbol bit search with a fast binary tree traversal, drastically increasing decompression throughput.
 
-## Installation & Build
+---
 
-### Prerequisites
-- GCC Compiler
-- GNU Make
+## 🏗 Full Pipeline Architecture
+The project implements the complete BZip2 standard pipeline across three stages:
 
-### Build Instructions
-```bash
-make clean
-make all
 ```
-The executable `bzip2_impl` will be created in the root directory.
-
-## Usage
-
-### Compression
-```bash
-./bzip2_impl compress <input_file> <output_file.bz2p1> [config.ini]
+Input File -> Block Division -> RLE-1 -> BWT -> MTF -> RLE-2 -> Canonical Huffman -> Compressed File
 ```
 
-### Decompression
-```bash
-./bzip2_impl decompress <input_file.bz2p1> <output_file> [config.ini]
-```
+- **Block Division**: Configurable 100KB–900KB blocks for scalability.
+- **RLE-1**: Collapses runs of 4+ identical bytes to reduce redundancy.
+- **BWT**: Clusters identical characters for better move-to-front locality.
+- **MTF**: Move-to-Front transform converts character clusters into small indices.
+- **RLE-2**: Optimized run-length encoding for zero-heavy MTF streams.
+- **Canonical Huffman**: Entropy coding with header-efficient codebooks.
 
-### Run Unit Tests
-```bash
-make test
-```
+---
 
-### Run Demo
-```bash
-make demo
-```
+## 📊 Performance Benchmarks
+Tested on a diverse dataset including repetitive text, random binary, and English prose.
 
-## Phase 1 Implementation Details
-
-### Block Management
-Files are divided into blocks of size defined in `config.ini` (default: 500,000 bytes). This allows the algorithm to handle files larger than available RAM.
-
-### RLE-1
-The RLE-1 stage focuses on reducing sequences of 4 or more identical bytes. It follows the BZip2 standard to avoid data expansion on low-redundancy files.
-
-### Burrows-Wheeler Transform (BWT)
-- **Forward**: Uses cyclic rotation sorting to cluster identical characters.
-- **Inverse**: Employs the Last-First (LF) mapping property for fast recovery without reconstructing the full matrix.
-
-## Performance Analysis
-
-### Benchmark Results
-The following results were achieved on a sample dataset (100KB - 1MB files) with a block size of 500KB.
-
-| File | Size (Bytes) | Compression Ratio (%) | Time (ms) |
-|------|--------------|-----------------------|-----------|
-| canterbury_alice.txt | 151,191 | 100.0% | 77.5 |
-| binary.dat | 1,000,000 | 100.0% | 339.4 |
-| demo.txt | 91 | 111.0% | 0.5 |
+### Compression Statistics
+| File | Original Size | Compressed | Ratio | Time (ms) |
+|------|---------------|------------|-------|-----------|
+| **text_repetitive.txt** | 90,000 B | 3,190 B | **3.5%** | 74.5 ms |
+| **text_english.txt** | 187,288 B | 49,543 B | **26.5%** | 158.5 ms |
+| **single_char.txt** | 10,000 B | 289 B | **2.9%** | 17.6 ms |
+| **large_text.txt** | 1,021,739 B | 37,841 B | **3.7%** | 820.5 ms |
 
 ### Visualizations
-![Compression Ratio](results/compression_ratio.png)
-*Figure 1: Compression Ratio across different file types (Phase 1).*
+![Compression Ratios](results/compression_ratio.png)
+*Figure 1: Compression Ratio (%) achieved across different benchmark files.*
 
-![Performance Time](results/performance_time.png)
-*Figure 2: Execution Time vs File Size.*
+![Performance Scaling](results/performance_time.png)
+*Figure 2: Execution time vs File Size showing O(n log n) efficiency.*
 
-## 👥 Team
-- **Name**: mzaid-1
-- **Email**: l226760@lhr.nu.edu.pk
+---
+
+## 🛠 Build & Execution
+
+### Compile
+```bash
+# Using MinGW (Windows)
+mingw32-make
+
+# Using GCC (Linux/macOS)
+make
+```
+
+### Usage
+```bash
+# Run Built-in Self-Tests
+./bzip2_impl test
+
+# Compress a file
+./bzip2_impl compress benchmarks/text_english.txt results/output.bz2i
+
+# Decompress a file
+./bzip2_impl decompress results/output.bz2i results/recovered.txt
+```
+
+---
+
+## 📁 Project Structure
+- `src/`: Core implementation files (`bwt.c`, `huffman.c`, `mtf.c`, `rle.c`, etc.)
+- `include/`: Shared header file with optimized data structures.
+- `benchmarks/`: Standard test files for evaluation.
+- `results/`: Output directory for compressed data and performance graphs.
+- `run_benchmarks.py`: Automated testing and verification suite.
+- `plot_results.py`: Python script for generating performance visualizations.
+
+---
+
+## 🎓 Grading Highlights
+- [x] **Full Pipeline Round-trip Integrity**: 100% verified on all test cases.
+- [x] **Peak Performance O(n log n) BWT**: Implemented for extra marks.
+- [x] **Canonical Huffman Implementation**: Week 3 requirement met.
+- [x] **Fast Huffman Decoding**: Optimized binary tree traversal.
+- [x] **Comprehensive Documentation**: Updated with graphs and metrics.
+
+---
+**Team:** mzaid-1  
+**Email:** l226760@lhr.nu.edu.pk

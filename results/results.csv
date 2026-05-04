@@ -1,7 +1,10 @@
 File,Size,BlockSize,CompressionRatio,Time,Memory
-binary_random.bin,50000,500000,102.64,29.5,N/A
-binary_repeat.bin,90000,500000,2.87,80.0,N/A
-single_char.txt,10000,500000,2.89,34.2,N/A
-small.txt,44,500000,695.45,27.7,N/A
-text_english.txt,182602,500000,27.09,102.0,N/A
-text_repetitive.txt,88000,500000,3.67,77.4,N/A
+binary.dat,1000000,500000,102.61,365.9,N/A
+binary_random.bin,50000,500000,102.64,33.5,N/A
+binary_repeat.bin,90000,500000,2.87,82.0,N/A
+canterbury_alice.txt,154575,500000,40.56,132.3,N/A
+large_text.txt,1021739,500000,3.70,1009.4,N/A
+single_char.txt,10000,500000,2.89,32.7,N/A
+small.txt,48,500000,639.58,32.4,N/A
+text_english.txt,187288,500000,26.45,150.2,N/A
+text_repetitive.txt,90000,500000,3.54,182.3,N/A
