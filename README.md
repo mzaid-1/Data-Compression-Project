@@ -79,14 +79,5 @@ make
 - `plot_results.py`: Python script for generating performance visualizations.
 
 ---
-
-## 🎓 Grading Highlights
-- [x] **Full Pipeline Round-trip Integrity**: 100% verified on all test cases.
-- [x] **Peak Performance O(n log n) BWT**: Implemented for extra marks.
-- [x] **Canonical Huffman Implementation**: Week 3 requirement met.
-- [x] **Fast Huffman Decoding**: Optimized binary tree traversal.
-- [x] **Comprehensive Documentation**: Updated with graphs and metrics.
-
----
 **Team:** mzaid-1  
 **Email:** l226760@lhr.nu.edu.pk
